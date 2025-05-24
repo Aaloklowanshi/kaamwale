@@ -1,13 +1,25 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.demo.enums.UserRole;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+import java.time.LocalDateTime;
+
+@Document(collection = "users")
+@Data
+@NoArgsConstructor @AllArgsConstructor @Builder
 public class User {
+    @Id
+    private String id;
+
+    private String name;
+    private String email;
+    private String phone;
+    private String password;
+    private UserRole role;
+
+    private LocalDateTime createdAt;
+    private boolean isVerified;
 }
